@@ -59,8 +59,9 @@ namespace StackArmyGame
             {
                 var hp = gg.GetCurrentHealth();
                 gg = new SpecialUnits.GulyayGorod(75, 30, 25);
-                gg.TakeDamage(gg.GetCurrentHealth() + gg.GetDefence() - hp);
+                gg.TakeDamage(gg.GetCurrentHealth() + gg.GetDefence() - hp + strength);
             }
+
             else if (!gg.IsDead)
             {
                 gg.TakeDamage(strength + gg.GetDefence());

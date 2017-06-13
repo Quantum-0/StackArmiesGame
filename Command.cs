@@ -100,7 +100,15 @@ namespace StackArmyGame
 
         public void Do()
         {
-            Army[Pos].GetHit(-Change);
+            if (Change > 0)
+            {
+                if (Army[Pos] is IHealable)
+                    (Army[Pos] as IHealable).Heal(Change);
+                else
+                    Army[Pos].GetHit(-Change);
+            }
+            else
+                Army[Pos].GetHit(-Change);
         }
 
         public void Undo()

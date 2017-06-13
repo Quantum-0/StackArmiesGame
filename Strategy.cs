@@ -76,7 +76,8 @@ namespace StackArmyGame
             var unitsA = GetUnitsInRadius(unitX, unitY, ((IAbility)unit).Distance, from);
 
             // For Enemies
-            unitX = Math.Abs(from.IndexOf(unit) % n - (n - 1)); // заменить
+            //unitX = Math.Abs(from.IndexOf(unit) % n - (n - 1)); // заменить
+            unitX = from.IndexOf(unit) % n; // перевернул систему координат так, чтоб она была зеркальным отражением системы For Allies
             unitY = -from.IndexOf(unit) / n - 1;
 
             var unitsE = GetUnitsInRadius(unitX, unitY, ((IAbility)unit).Distance, to);

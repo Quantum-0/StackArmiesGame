@@ -88,7 +88,8 @@ namespace StackArmyGame
             else
                 army = Engine.Instance.ArmyB;
 
-            var cmd = new AddHealthCommand(army, army.IndexOf(target), rnd.Next(target.Armor) - Strength);
+            var hp = Math.Min(Strength, rnd.Next(target.Armor)) - Strength;
+            var cmd = new AddHealthCommand(army, army.IndexOf(target), hp);
             cmd.Do();
             commands.Add(cmd);
 

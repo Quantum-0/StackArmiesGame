@@ -11,7 +11,7 @@ using System.Threading.Tasks;
  * ---------------------------------------------------------------------------------------
  * Создание юнита            | фабричный метод     | UnitFactory.cs
  * Движок                    | синглтон            | Engine.cs
- * Отмена/Повтор хода        | команда             | Engine.cs
+ * Отмена/Повтор хода        | команда             | Engine.cs Command.cs
  * Стратегия боя             | стратегия           | Engine.cs Strategy.cs
  * Наблюдатель (смерть)      | наблюдатель         | IObservable.cs Observers.cs AUnit.cs
  * Гуляй город               | адаптер             | GulyayGorod.cs
@@ -143,19 +143,22 @@ namespace StackArmyGame
 
             if (engine.CanMakeTurn == false)
             {
-                string key;
+                KeyValuePair<string, Army> kwp;
                 if (engine.ArmyA.Count == 0)
                 {
                     CUI.Log("Вторая армия победила");
-                    key = Armies.First(a => a.Value == engine.ArmyA).Key;
+                    kwp = Armies.FirstOrDefault(a => a.Value == engine.ArmyA);
                 }
                 else
                 {
                     CUI.Log("Первая армия победила");
-                    key = Armies.First(a => a.Value == engine.ArmyB).Key;
+                    kwp = Armies.FirstOrDefault(a => a.Value == engine.ArmyB);
                 }
-                Armies.Remove(key);
-                CUI.Log($"Армия {key} удалена, т.к. не содержит в себе юнитов");
+                if (!kwp.Equals(default(KeyValuePair<string, Army>)))
+                {
+                    Armies.Remove(kwp.Key);
+                    CUI.Log($"Армия {kwp.Key} удалена, т.к. не содержит в себе юнитов");
+                }
             }
 
             CUI.Log(""); // чтоб отделить ходы
