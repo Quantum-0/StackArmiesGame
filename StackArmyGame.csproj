@@ -80,6 +80,15 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Screenshots\ArmyCreated.png" />
+    <Content Include="Screenshots\CreateArmyMenu.png" />
+    <Content Include="Screenshots\MainMenu.png" />
+    <Content Include="Screenshots\MoreTurnsExample.png" />
+    <Content Include="Screenshots\SelectStrategyMenu.png" />
+    <Content Include="Screenshots\TurnExample.png" />
+    <Content Include="Screenshots\UndoRedoExample.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
